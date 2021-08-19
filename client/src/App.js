@@ -1,19 +1,20 @@
+import React, { Suspense, lazy } from "react";
+import { Route } from "react-router-dom";
+import MainLoader from "./components/MainLoader";
+import PrivateRoute from "./PrivateRoute";
+const DashboardPage = lazy(() => import("./views/pages/DashboardPage"));
+const LoginPage = lazy(() => import("./views/pages/LoginPage"));
+
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Suspense fallback={<MainLoader />}>
+        <PrivateRoute path="/dashboard">
+          <DashboardPage />
+        </PrivateRoute>
+        <Route path="/login" component={LoginPage} />
+      </Suspense>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-require("./db-connection")();
+const dbConnection = require("./db-connection");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -21,4 +21,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/", (req, res) => res.status(200).send("API is working..."));
 app.use("/users", users);
 
-app.listen(process.env.PORT || config.port, () => console.log("API started."));
+try {
+  dbConnection().then(() => {
+    app.listen(process.env.PORT || config.port, () =>
+      console.log(
+        `Server start at: http://localhost:${
+          config.port ? config.port : process.env.PORT
+        }`
+      )
+    );
+  });
+} catch (err) {
+  console.log(err.message);
+}

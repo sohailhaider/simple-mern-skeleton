@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const config = require("./config.json");
 
 module.exports = () => {
-  mongoose
+  return mongoose
     .connect(config.connectionString, {
       // "auth": {
       //   "authSource": "admin"
@@ -14,7 +14,7 @@ module.exports = () => {
       poolSize: 5,
       useUnifiedTopology: true,
     })
-    .then((db) => console.log("Connected with MongoDB."))
+    .then((db) => Promise.resolve(console.log("Connected with MongoDB.")))
     .catch((err) =>
       console.log(`Unable to connect with MongoDB: ${err.message}`)
     );

@@ -1,16 +1,16 @@
 const router = require("express").Router();
 const userManager = require("../managers/user");
+const { prepareUserForLoginResponse } = require("../utilities/object-parsers");
 
 router.post("/login", async (req, res) => {
   try {
     let user = await userManager.getByEmail(req.body.email);
-    if (!user)
-      return res.status(400).send(`User does not exists with this email.`);
+    if (!user) return res.status(400).send(`Invalid email/password provided.`);
 
     if (req.body.password === user.password) {
-      return res.status(200).send(user);
+      return res.status(200).send(prepareUserForLoginResponse(user.toObject()));
     } else {
-      return res.status(400).send(`Password did not match.`);
+      return res.status(400).send(`Invalid email/password provided.`);
     }
   } catch (ex) {
     return res.status(500).send(ex.message);

@@ -1,6 +1,6 @@
 {
-    "connectionString": "mongodb://localhost:29017/test",
-    "username": "user",
-    "password": "pass",
-    "port": 3310
+  "connectionString": "mongodb://localhost:29017/mern_sample",
+  "username": "user",
+  "password": "pass",
+  "port": 3310
 }

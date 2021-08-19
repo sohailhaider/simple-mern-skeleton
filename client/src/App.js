@@ -4,6 +4,7 @@ import MainLoader from "./components/MainLoader";
 import PrivateRoute from "./PrivateRoute";
 const DashboardPage = lazy(() => import("./views/pages/DashboardPage"));
 const LoginPage = lazy(() => import("./views/pages/LoginPage"));
+const SignupPage = lazy(() => import("./views/pages/SignupPage"));
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <DashboardPage />
         </PrivateRoute>
         <Route path="/login" component={LoginPage} />
+        <Route path="/signup" component={SignupPage} />
       </Suspense>
     </div>
   );

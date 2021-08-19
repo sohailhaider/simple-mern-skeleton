@@ -5,8 +5,9 @@ import {
   navigateToSignup,
 } from "../../../utilities/navigation-helper";
 import LoginForm from "./LoginForm";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLoggedIn } from "../../../store/slices/loginSlice";
+import { Redirect } from "react-router-dom";
 // import PropTypes from "prop-types"
 
 const propTypes = {};
@@ -15,6 +16,7 @@ const defaultProps = {};
 
 const LoginPage = (props) => {
   const dispatch = useDispatch();
+  const isLogin = useSelector((state) => state.login.isLogin);
 
   const handleLogin = async (values) => {
     try {
@@ -28,9 +30,18 @@ const LoginPage = (props) => {
   };
   return (
     <React.Fragment>
-      <LoginForm handleLogin={handleLogin} />
-
-      <button onClick={navigateToSignup}>Creat an account Now</button>
+      {isLogin ? (
+        <Redirect
+          to={{
+            pathname: "/dashboard",
+          }}
+        />
+      ) : (
+        <div>
+          <LoginForm handleLogin={handleLogin} />
+          <button onClick={navigateToSignup}>Creat an account Now</button>
+        </div>
+      )}
     </React.Fragment>
   );
 };

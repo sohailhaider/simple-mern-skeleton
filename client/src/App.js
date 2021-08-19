@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { Route } from "react-router-dom";
 import MainLoader from "./components/MainLoader";
 import PrivateRoute from "./PrivateRoute";
+import LogoutPage from "./views/pages/LogoutPage";
 const DashboardPage = lazy(() => import("./views/pages/DashboardPage"));
 const LoginPage = lazy(() => import("./views/pages/LoginPage"));
 const SignupPage = lazy(() => import("./views/pages/SignupPage"));
@@ -16,6 +17,7 @@ function App() {
         </PrivateRoute>
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignupPage} />
+        <Route path="/logout" component={LogoutPage} />
         <PrivateRoute exact path="/">
           <DashboardPage />
         </PrivateRoute>

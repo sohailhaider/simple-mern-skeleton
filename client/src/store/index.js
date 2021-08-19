@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import loginReducer from "./slices/loginSlice";
 
-const STATE_NAME = "reduxState";
+const STATE_NAME = "mernAppReduxState";
 const persistedState = localStorage.getItem(STATE_NAME)
   ? JSON.parse(localStorage.getItem(STATE_NAME))
   : {};

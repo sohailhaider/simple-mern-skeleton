@@ -1,4 +1,4 @@
-const serverURL = "http://localhost:3310";
+const serverURL = process.env.REACT_APP_SERVER_URL;
 
 export const usersEndPoint = `${serverURL}/users`;
 export const userLoginEndPoint = `${usersEndPoint}/login`;

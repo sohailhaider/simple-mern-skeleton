@@ -5,3 +5,6 @@ export const navigateToLogin = () => {
 export const navigateToSignup = () => {
   history.push("/signup")
 }
+export const navigateToDashboard = () => {
+  history.push("/dashboard")
+}

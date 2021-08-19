@@ -7,6 +7,6 @@ export const loginUser = async (email, password) => {
 };
 
 export const signupUser = async (email, password) => {
-  const response = axios.post(userSignupEndPoint, { email, password });
+  const response = await axios.post(userSignupEndPoint, { email, password });
   return response.data;
 };

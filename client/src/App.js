@@ -16,6 +16,9 @@ function App() {
         </PrivateRoute>
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignupPage} />
+        <PrivateRoute exact path="/">
+          <DashboardPage />
+        </PrivateRoute>
       </Suspense>
     </div>
   );
